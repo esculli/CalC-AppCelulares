@@ -1,0 +1,11 @@
+﻿div.info {
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+}
+
+div.infoUsuario {
+    
+    display: inline-block;
+    vertical-align: top;
+}

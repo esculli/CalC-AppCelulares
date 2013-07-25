@@ -1,0 +1,56 @@
+﻿div#map_canvas {
+    width: 220px; 
+    height: 100px; 
+    border: 1px solid black;
+}
+
+div#horario {
+    width: 219px; 
+    height: 100px; 
+    background-color: white;
+    overflow: auto; 
+    padding: 0px;
+}
+
+div#horario div {
+    display: inline-block; 
+    vertical-align: middle; 
+    margin: 4px;
+}
+
+div#horario div input[type=checkbox] {
+    margin: 1px 2px 2px 0px;
+}
+
+@media (max-width: 979px) and (min-width: 768px) {
+	
+	div.page-header {
+		margin-top: 0px;
+		margin-bottom: 10px;
+	}
+	
+	select {
+		width: 180px;
+	}
+	
+	div#map_canvas {
+		width: 180px;
+	}
+	
+	input#nombre {
+		width: 180px;
+	}
+	
+	.offset1 {
+		margin-left: 0px;
+	}
+	
+	.offset6 {
+		margin-left: 310px;
+	}
+	
+	label[for=horario] {
+		width: 100px !important;
+		margin-left: 45px;
+	}
+}

@@ -1,0 +1,68 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    min-width: 285px;
+}
+
+@media (max-width: 979px) {
+
+  /* Remove any padding from the body */
+  body {
+    padding-top: 0;
+  }
+}
+
+
+.navbar .brand.icon {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 5px;
+}
+
+.navbar .brand.icon img {
+    height: 36px;
+}
+
+.navbar .social {
+    float: right;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.navbar select {
+    margin: 0px;
+    height: 23px;
+    padding: 2px;
+    width: 160px;
+}
+
+.container .empresas, .container .ramales{
+  margin-top: 10px;
+}
+
+.horario{
+  text-align: center;
+  margin: 5px 10px;
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+  .horario{
+    width: 10%;
+    float:left;
+    margin: 0%;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .horario{
+    width: 20%;
+  }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { ... }
+
+/* Large desktop */
+@media (min-width: 1200px) { ... }
