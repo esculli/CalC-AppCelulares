@@ -6,14 +6,14 @@
         id        = "com.phonegap.hello-world"
         version   = "1.0.0">
 
-    <name>Hello World</name>
+    <name>Combis a la Carta</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Combis a la Carta - Reservas online de Combis y Charters.
     </description>
 
-    <author href="http://phonegap.com" email="support@phonegap.com">
-        PhoneGap Team
+    <author href="http://combisalacarta.com" email="info@combisalacarta.com">
+        El equipo de Combis a la Carta
     </author>
 
     <!--
