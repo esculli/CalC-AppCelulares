@@ -1,4 +1,4 @@
-﻿var jsonData = null;
+﻿
 
 $(document).ready(function () {
     loadData();
@@ -33,13 +33,16 @@ $(document).ready(function () {
 
 function loadData() {
     if (jsonData == null) {
-        $.ajaxSetup({ cache: false });
-        $.get("/sitio.data", function (result) {
+        $.get("store/data.json", function (result) {
             //jsonData = Combis.Crypto.Desencriptar(result);
 			jsonData = result;
             notifyDataLoaded();
         });
     }
+	else
+	{
+		notifyDataLoaded();
+	}
 }
 
 function notifyDataLoaded() {

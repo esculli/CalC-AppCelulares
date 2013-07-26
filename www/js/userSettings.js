@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var informacionPersonal = {
+var app = {
     // Application Constructor
     initialize: function() {
         $("#nombre").val(window.localStorage.getItem("nombre"));
@@ -24,14 +24,12 @@ var informacionPersonal = {
         $("#telefono").val(window.localStorage.getItem("telefono"));
     },
     
-	guardar: function () {
+	aceptar: function () {
 		
 		window.localStorage.setItem("nombre", $("#nombre").val());
 		window.localStorage.setItem("email", $("#email").val());
 		window.localStorage.setItem("telefono", $("#telefono").val());
 		
-		alert('Guardado!');
-		
-		window.location = 'empresas.html';
+		alert('Settings saved!');
 	}
 };

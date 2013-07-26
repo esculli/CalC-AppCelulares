@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<title>Combis a la Carta</title>
+		
+		<link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+		<link rel="stylesheet" href="codiqa.ext.css">
+		
+		<script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+		<script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+		
+		<script src="https://d10ajoocuyu32n.cloudfront.net/codiqa.ext.js"></script>
+    </head>
+    <body>
+		<!-- Home -->
+		<div data-role="page" id="page1">
+			<div data-theme="" data-role="header" data-position="fixed">
+				<h3>
+					Informacion Personal
+				</h3>
+			</div>
+			<div data-role="content">
+				<form action="">
+					<h3>
+			            Completa tu datos, para agilizar el proceso de reserva
+			        </h3>
+					<div data-role="fieldcontain">
+						<label for="nombre">
+							Nombre y Apellido
+						</label>
+						<input name="" id="nombre" placeholder="" value="" type="text" data-mini="true">
+					</div>
+					<div data-role="fieldcontain">
+						<label for="email">
+							Email
+						</label>
+						<input name="" id="email" placeholder="" value="" type="email">
+					</div>
+					<div data-role="fieldcontain">
+						<label for="telefono">
+							Telefono
+						</label>
+						<input name="" id="telefono" placeholder="" value="" type="tel">
+					</div>
+					<input type="submit" value="Guardar" onclick="app.aceptar(); return false;">
+				</form>
+			</div>
+		</div>
+        <script type="text/javascript" src="cordova-2.7.0.js"></script>
+		<script type="text/javascript" src="js/userSettings.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>

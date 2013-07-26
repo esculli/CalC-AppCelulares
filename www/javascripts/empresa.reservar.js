@@ -25,7 +25,6 @@ function onDataLoaded() {
 }
 
 $(document).ready(function () {
-    $(".persistir").persist();
     initializeMap();
 });
 

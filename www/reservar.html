@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="CombisalaCarta.com">
+	
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	
+
+	<link href="stylesheets/bootstrap/bootstrap.css" rel="stylesheet">
+	<link href="stylesheets/bootstrap/bootstrap-responsive.css" rel="stylesheet">
+	<link href="stylesheets/style.css" rel="stylesheet">
+	<link href="stylesheets/reservaEmpresa.css" rel="stylesheet">
+
+	<script src="javascripts/fx/jquery-1.7.2.min.js"></script>
+	<script src="javascripts/fx/bootstrap.min.js"></script>
+	<script src="javascripts/fx/jslinq.js"></script>
+
+	<script src="store/data.js"></script>
+	<script src="javascripts/shared.datamodel.js"></script>
+    <script src="javascripts/shared.reservar.js"></script>
+	<script src="javascripts/empresa.reservar.js"></script>
+	
+	<title>Reservar</title>	
+	
+	<script id="horariosTemplate" type="text/x-handlebars-template">
+        {{#each .}}<div><input type='radio' name='horarios' value='{{.}}' />{{.}}</div>{{/each}}
+    </script>
+	
+  </head>
+
+  <body>
+
+  	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand icon" href="#">
+					<img src="images/icon.png" alt="" />
+				</a>
+				<a class="brand" href="/">Combis a la Carta</a>
+				
+				<div class="nav-collapse">
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div class="container">
+		
+		<div class="page-header clearfix">
+			<div style="float: left; margin-top: 7px;   vertical-align: middle; margin-right: 10px;">
+				<img src="images/empresas/Rober Dibe.png" width="80"/>
+			</div>
+			<div style="float: left; margin-top: 2px;">
+				<h1>Roberdibe</h1>
+				<h1><small>Zona Oeste - <a href="tel:+54 11 {Telefono}">4661 6658</a></small></h1>
+			</div>
+		</div>
+		<form class="well form-horizontal" action="/rober-dibe/reservar" method="post">
+			<input type="hidden" id="empresa" name="empresa" value="Rober Dibe" />
+			<input type="hidden" id="type" name="type" value="{reservarTipo}" />
+			<div class="container">
+				<div class="row">
+					<div class="span5 offset1">
+						<fieldset>
+							<div class="control-group">
+								<label class="control-label" for="ramal">Ramal</label>
+								<div class="controls">
+									<select id="ramal" name="ramal" onchange="ramalChanged();">
+									</select>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+					<div class="span6">
+						<fieldset>
+							<div class="control-group">
+								<label class="control-label" for="recorrido">Recorrido</label>
+								<div class="controls">
+									<div id="recorrido" class="btn-group" data-toggle="buttons-radio">
+										<button id="recorridoIda" class="btn btn-primary active" onclick="activateButton(this); recorridoChanged(); return false;">Ida</button>
+										<button id="recorridoVuelta" class="btn btn-primary" onclick="activateButton(this); recorridoChanged(); return false;">Vuelta</button>
+									</div>
+									<input type="hidden" id="recorrido" name="recorrido" />
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span5 offset1">
+						<fieldset>
+							<div class="control-group">
+								<label class="control-label" for="parada">Parada</label>
+								<div class="controls">
+									<select id="parada" name="parada" onchange="paradaChanged();">
+									</select>
+
+									<label style="padding-top: 5px;"></label>
+									<!--<label class="checkbox" style="padding-top: 5px;">
+										<input id="paradaCercana" type="checkbox" value="" style="margin-top: -3px;">
+										Parada m&aacute;s cercana
+									</label>-->
+									<!-- <div id="map_canvas"></div> -->
+								</div>
+							</div>
+						</fieldset>
+					</div>
+					<div class="span6">
+						<fieldset>
+							<div class="control-group">
+								<label class="control-label" for="dia">D&iacute;a</label>
+								<div class="controls">
+									<div id="dia" class="btn-group" data-toggle="buttons-radio">
+										<button id="diaHoy" class="btn btn-primary active" onclick="activateButton(this); diaChanged(); return false;">Hoy</button>
+										<button id="diaManana" class="btn btn-primary" onclick="activateButton(this); diaChanged(); return false;">Ma&ntilde;ana</button>
+										<!--<button id="diaTercer" class="btn btn-primary" onclick="activateButton(this); diaChanged(); return false;">Viernes</button>-->
+									</div>
+									<input type="hidden" id="dia" name="dia" />
+								</div>
+							</div>
+							
+							<!--{@if cond="('{reservarTipo}' == 'modify' || '{reservarTipo}' == 'cancel')"}-->
+								<div class="control-group">
+									<label class="control-label" for="horarioAnterior">
+										Horario Anterior
+									</label>	
+									<div class="controls">
+										<select id="horarioAnterior" name="horarioAnterior" style="width: 100px;">
+										</select>
+									</div>
+								</div>
+							<!--{/if}-->
+
+							<!--{@if cond="('{reservarTipo}' == 'create' || '{reservarTipo}' == 'modify')"}-->
+								<div class="control-group">
+									<label class="control-label" for="horario"><font id="horarioText">Horario Nuevo</font> <br />
+										<font style="font-size: 10px;">
+											<i>Seleccione multiples horarios, su reserva sera generada en el primer horario disponible.</i>
+										</font>
+									</label>
+									<div class="controls">
+										<div class="input-prepend">
+											<div id="horario" class="add-on">
+											</div>
+										</div>
+									</div>
+								</div>
+							<!--{/if}-->
+						</fieldset>
+					</div>
+				</div>
+				<div class="row">
+					<div class="offset6 span6">
+						<fieldset>
+							<div class="control-group">
+								<div class="controls" style="padding-left: 145px;">
+									<button type="submit" class="btn btn-primary reservar" onclick="return validarReserva();" disabled="true">Reservar</button>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+		</form>
+    </div>
+  </body>
+</html
